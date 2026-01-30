@@ -1,7 +1,7 @@
 # 🇹🇿 Determinants of Childhood Malnutrition in Tanzania (DHS 2022)
 ![R](https://img.shields.io/badge/Language-R-blue) ![DHS](https://img.shields.io/badge/Data-Demographic_Health_Survey-orange) ![Status](https://img.shields.io/badge/Analysis-Survey_Weighted_GLM-green)
 
-> **Project Abstract:** Using data from the **2022 Tanzania Demographic and Health Survey (TDHS)**, this study investigates the socio-economic drivers of childhood stunting, underweight, and wasting. The analysis applies **survey-weighted logistic regression** to identify vulnerable populations among children under five.
+>  Using data from the **2022 Tanzania Demographic and Health Survey (TDHS)**, this study investigates the socio-economic drivers of childhood malnutrition, stunting, underweight, and wasting. The analysis applies **survey-weighted logistic regression** to identify vulnerable populations among children under five.
 
 ---
 
