@@ -53,16 +53,4 @@ This analysis accounts for the complex survey design of the DHS to generate nati
     * **Clustering:** Adjusted for Primary Sampling Units (`v021`).
     * **Stratification:** Adjusted for Region/Urban-Rural strata (`v022`).
 
-```r
-# Example of Survey Design Implementation
-dhs_design <- svydesign(
-  id = ~v021,
-  strata = ~v022,
-  weights = ~sample_weight,
-  data = tanzania_data
-)
 
-# Weighted Logistic Regression
-model <- svyglm(stunting ~ wealth_index + child_sex + maternal_education, 
-                design = dhs_design, 
-                family = binomial)
