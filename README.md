@@ -54,12 +54,26 @@ The weighted logistic regression model reveals three critical determinants:
 ---
 
 ## 🛠️ Methodology
-This analysis accounts for the complex survey design of the DHS to generate nationally representative estimates.
+This analysis followed a rigorous data science pipeline using **R (v4.x)**. The workflow was divided into three stages: Data Wrangling, Statistical Modeling, and Visualization.
 
-* **Tools Used:** `R` (tidyverse, survey, haven, ggplot2).
-* **Survey Design:**
-    * **Weights:** De-normalized individual weights (`v005`/1,000,000).
-    * **Clustering:** Adjusted for Primary Sampling Units (`v021`).
-    * **Stratification:** Adjusted for Region/Urban-Rural strata (`v022`).
+### 🔹 1. Data Cleaning & Variable Modification
+Raw DHS data was processed using the `tidyverse` and `haven` packages to create analysis-ready variables:
+* **Recoding:** Categorical variables were harmonized (e.g., Maternal Education `v106` re-grouped into *No Education, Primary, Secondary, Higher*).
+* **Variable Transformation:**
+    * **Stunting/Wasting:** Converted continuous Z-scores (`hw70`, `hw72`) into binary outcome variables (Stunted = HAZ < -2 SD).
+    * **Wealth Index:** Preserved the original 5-level quintile structure (`v190`) for socio-economic gradient analysis.
+* **Missing Data:** Handled implicitly by excluding cases with missing anthropometric data or "Flagged" Z-scores.
+
+### 🔹 2. Statistical Analysis
+All analyses accounted for the **Complex Survey Design** (Stratification, Clustering, and Sampling Weights) using the `survey` package.
+
+#### **A. Descriptive Statistics**
+* **Weighted Proportions:** Estimated the national prevalence of malnutrition outcomes.
+* **Bivariate Analysis:** Chi-square tests (Rao-Scott corrected) were used to test associations between socio-demographic factors and malnutrition.
+
+#### **B. Regression Modeling**
+Two types of models were fitted to assess determinants:
+1.  **Survey-Weighted Logistic Regression (`svyglm`):** Used for binary outcomes (e.g., Stunting Yes/No) to calculate **Adjusted Odds Ratios (aOR)**.
+2.  **Survey-Weighted Linear Regression:** Used for continuous outcomes (e.g., Height-for-Age Z-scores) to assess the linear relationship between maternal BMI and child growth.
 
 
