@@ -1,7 +1,7 @@
 # 🇹🇿 Determinants of Childhood Malnutrition in Tanzania (DHS 2022)
 ![R](https://img.shields.io/badge/Language-R-blue) ![DHS](https://img.shields.io/badge/Data-Demographic_Health_Survey-orange) ![Status](https://img.shields.io/badge/Analysis-Survey_Weighted_GLM-green)
 
-> **Project Abstract:** Using data from the **2022 Tanzania Demographic and Health Survey (TDHS)**, this study investigates the socio-economic drivers of childhood stunting, underweight, and wasting. The analysis applies **survey-weighted logistic regression** to identify vulnerable populations among children under five.
+> ** Using data from the **2022 Tanzania Demographic and Health Survey (TDHS)**, this study investigates the socio-economic drivers of childhood stunting, underweight, and wasting. The analysis applies **survey-weighted logistic regression** to identify vulnerable populations among children under five.
 
 ---
 
@@ -62,16 +62,4 @@ This analysis accounts for the complex survey design of the DHS to generate nati
     * **Clustering:** Adjusted for Primary Sampling Units (`v021`).
     * **Stratification:** Adjusted for Region/Urban-Rural strata (`v022`).
 
-```r
-# Example of Survey Design Implementation in R
-dhs_design <- svydesign(
-  id = ~v021,
-  strata = ~v022,
-  weights = ~sample_weight,
-  data = tanzania_data
-)
 
-# Weighted Logistic Regression
-model <- svyglm(stunting ~ wealth_index + child_sex + maternal_education, 
-                design = dhs_design, 
-                family = binomial)
