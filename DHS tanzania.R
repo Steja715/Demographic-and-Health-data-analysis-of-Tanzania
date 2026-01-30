@@ -16,7 +16,7 @@ library(dplyr)
 # ---- load the file-----
 
 
-mydata <- read_dta("D:/R for public health/Files/Tanzania/TZ_2022_DHS_01292026_1346_240008/TZKR82DT/TZKR82FL.DTA")
+mydata <- read_dta("data/TZIR82FL.DTA")
 
 view(mydata)
 
@@ -903,6 +903,7 @@ glmer(
   tbl_regression(
     exponentiate = TRUE
   )
+
 
 
 
